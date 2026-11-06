@@ -1,7 +1,21 @@
-### **THIS IS NOT WHERE THE PROJECT IS HOSTED**
+## C202 PostgreSQL Champions Overview
+### C202 PostgreSQL Champions is a secure database application developed for the CYBR202 Database Security course.
 
-This Github Repo is to store/archive our progress as we go on.
+*The project demonstrates the design & implementation of a PostgreSQL database using Supabase...*
 
-- Further Iterations will be stored, and rollback will be easier.
+## Project Objectives
 
-_Thanks..._
+Design a relational database using [supabase](https://supabase.com)
+
+**Tech Used**
+
+- PostgreSQL
+
+- Supabase
+
+- SQL
+
+- GitHub
+
+
+TEAM:

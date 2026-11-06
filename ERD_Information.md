@@ -9,6 +9,7 @@ Author,
 Book,
 Loan,
 Reservation
+
 RELATIONSHIPS:
 
 Publisher->Book,

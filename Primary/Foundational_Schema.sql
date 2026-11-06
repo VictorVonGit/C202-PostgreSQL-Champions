@@ -10,9 +10,11 @@ CREATE TABLE public.publisher (
 );
 CREATE TABLE public.author (
   author_id integer GENERATED ALWAYS AS IDENTITY NOT NULL,
-  author_name character varying NOT NULL,
+  author_name text NOT NULL,
   bio text,
-  CONSTRAINT author_pkey PRIMARY KEY (author_id)
+  user_id integer NOT NULL,
+  CONSTRAINT author_pkey PRIMARY KEY (author_id, user_id),
+  CONSTRAINT author_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.member(user_id)
 );
 CREATE TABLE public.library_user (
   user_id integer GENERATED ALWAYS AS IDENTITY NOT NULL,
@@ -35,14 +37,7 @@ CREATE TABLE public.book (
   publication_year integer NOT NULL,
   publisher_id integer NOT NULL,
   CONSTRAINT book_pkey PRIMARY KEY (book_id),
-  CONSTRAINT fk_book_publisher FOREIGN KEY (publisher_id) REFERENCES public.publisher(publisher_id)
-);
-CREATE TABLE public.book_author (
-  book_id integer NOT NULL,
-  author_id integer NOT NULL,
-  CONSTRAINT book_author_pkey PRIMARY KEY (book_id, author_id),
-  CONSTRAINT book_author_book_id_fkey FOREIGN KEY (book_id) REFERENCES public.book(book_id),
-  CONSTRAINT book_author_author_id_fkey FOREIGN KEY (author_id) REFERENCES public.author(author_id)
+  CONSTRAINT book_publisher_id_fkey FOREIGN KEY (publisher_id) REFERENCES public.publisher(publisher_id)
 );
 CREATE TABLE public.loan (
   loan_id integer GENERATED ALWAYS AS IDENTITY NOT NULL,
@@ -52,8 +47,8 @@ CREATE TABLE public.loan (
   loan_expiration_date date NOT NULL,
   return_date date,
   CONSTRAINT loan_pkey PRIMARY KEY (loan_id),
-  CONSTRAINT loan_book_id_fkey FOREIGN KEY (book_id) REFERENCES public.book(book_id),
-  CONSTRAINT loan_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.member(user_id)
+  CONSTRAINT loan_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.member(user_id),
+  CONSTRAINT loan_book_id_fkey FOREIGN KEY (book_id) REFERENCES public.book(book_id)
 );
 CREATE TABLE public.reservation (
   reservation_id integer GENERATED ALWAYS AS IDENTITY NOT NULL,
@@ -62,6 +57,6 @@ CREATE TABLE public.reservation (
   reservation_date date NOT NULL,
   reservation_expiration_date date NOT NULL,
   CONSTRAINT reservation_pkey PRIMARY KEY (reservation_id),
-  CONSTRAINT reservation_book_id_fkey FOREIGN KEY (book_id) REFERENCES public.book(book_id),
-  CONSTRAINT reservation_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.member(user_id)
+  CONSTRAINT reservation_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.member(user_id),
+  CONSTRAINT reservation_book_id_fkey FOREIGN KEY (book_id) REFERENCES public.book(book_id)
 );

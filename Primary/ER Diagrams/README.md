@@ -12,8 +12,8 @@ Reservation
 
 RELATIONSHIPS:
 
-Publisher->Book,
-Member->Loan,
-Member->Reservation,
-Book->Reservation,
-Book<->Author
+Publisher->Book (1:M),
+Member->Loan (1:M),
+Member->Reservation (1:M),
+Book->Reservation (1:M),
+Book<->Author (M:N)

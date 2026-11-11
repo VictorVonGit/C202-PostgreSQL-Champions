@@ -19,3 +19,15 @@ Design a relational database using [supabase](https://supabase.com)
 
 
 TEAM:
+
+Josh - Database Development / Query Design
+
+Joseph - Documentation/Report
+
+Cameron - Database Development
+
+Christian - Document/Report
+
+Andrew - Query Design
+
+Daniel - Documentation/Report

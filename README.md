@@ -18,7 +18,7 @@ Design a relational database using [supabase](https://supabase.com)
 - GitHub
 
 
-TEAM:
+**TEAM**:
 
 Josh - Database Development / Query Design
 
